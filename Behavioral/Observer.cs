@@ -143,17 +143,17 @@ namespace Observer.Structural
         public static void Main(string[] args)
         {
             // Configure Observer pattern
-            ConcreteSubject s = new ConcreteSubject();
+            ConcreteSubject s = new ConcreteSubject("Hans Sverre");
 
             s.Attach(new ConcreteObserver(s, "Ove"));
             s.Attach(new ConcreteObserver(s, "Sveinung"));
-            s.Attach(new ConcreteObserver(s, "Karoline"));
+            s.Attach(new ConcreteObserver(s, "Ingrid"));
 
             // Change subject and notify observers
-            s.SubjectState = "Hans Sverre er på jobb";
+            s.SubjectState = "har logga inn på jobb";
             s.Notify();
 
-            s.SubjectState = "Hans Sverre har logga ut";
+            s.SubjectState = "har logga ut";
             s.Notify();
 
             // Wait for user
@@ -193,12 +193,24 @@ namespace Observer.Structural
     public class ConcreteSubject : Subject
     {
         private string subjectState;
+        private string _subjectName;
+
+        public ConcreteSubject(string subjectName)
+        {
+            _subjectName = subjectName; 
+        }
 
         // Gets or sets subject state
         public string SubjectState
         {
             get { return subjectState; }
             set { subjectState = value; }
+        }
+
+        public string SubjectName
+        {
+            get { return _subjectName; }
+            set { _subjectName = value; }
         }
     }
 
@@ -220,8 +232,7 @@ namespace Observer.Structural
         private ConcreteSubject subject;
 
         // Constructor
-        public ConcreteObserver(
-            ConcreteSubject subject, string name)
+        public ConcreteObserver(ConcreteSubject subject, string name)
         {
             this.subject = subject;
             this.name = name;
@@ -231,7 +242,7 @@ namespace Observer.Structural
         {
             observerState = subject.SubjectState;
             Console.WriteLine("Observer {0}'s new state is {1}",
-                name, observerState);
+                name, subject.SubjectName + " " + observerState);
         }
 
         // Gets or sets subject
