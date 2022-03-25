@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Observer.Structural.Program</StartupObject>
+    <StartupObject>Strategy.RealWorld.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -50,6 +50,7 @@
     <Compile Include="Behavioral\Iterator.cs" />
     <Compile Include="Behavioral\Observer.cs" />
     <Compile Include="Behavioral\State.cs" />
+    <Compile Include="Behavioral\Strategy.cs" />
     <Compile Include="Creational\Prototype.cs" />
     <Compile Include="Structural\Adapter.cs" />
     <Compile Include="Structural\Composite.cs" />
